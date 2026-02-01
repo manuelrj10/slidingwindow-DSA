@@ -1,7 +1,7 @@
 import java.util.HashMap;
 class LargestSubstringwithUniqueCharcter{
     public static void main(String args[]){
-        String str="eceba";
+        String str="aaabbcc";
         char[] arr=str.toCharArray();
         HashMap<Character,Integer> map=new HashMap<>();
         int left=0;//Shrinking window
@@ -11,13 +11,16 @@ class LargestSubstringwithUniqueCharcter{
             char rchar=arr[right];
             map.put(rchar,map.getOrDefault(rchar,0)+1);
 
-            while(map.get(rchar)>2){
+            while(map.get(rchar)>1){
                 char lchar=arr[left];
                 map.put(lchar,map.get(lchar)-1);
                 left++;
             }
             max=Math.max(max,right-left+1);
         }
+        System.out.println(map.size());//number of keys in a given hashmap
+       
         System.out.println(max);
+        
+        }
     }
-}
